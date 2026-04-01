@@ -1,8 +1,9 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMotor : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 6f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -27,6 +28,7 @@ public class PlayerMotor : MonoBehaviour
     public void ResetToPosition(Vector3 pos)
     {
         transform.position = pos;
+        moveInput = Vector2.zero;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
     }
