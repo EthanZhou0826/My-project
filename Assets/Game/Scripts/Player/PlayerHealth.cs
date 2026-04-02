@@ -23,6 +23,11 @@ public class PlayerHealth : MonoBehaviour
         deadEventSent = false;
     }
 
+    public void SetCurrentHP(int hp)
+    {
+        currentHP = Mathf.Clamp(hp, 0, maxHP);
+    }
+
     public void TakeDamage(int damage)
     {
         if (IsDead) return;
@@ -30,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
         currentHP -= damage;
         currentHP = Mathf.Max(currentHP, 0);
 
-        Debug.Log("Player HP = " + currentHP);
+        Debug.Log($"Player HP = {currentHP}");
 
         if (currentHP == 0 && !deadEventSent)
         {
